@@ -1,0 +1,112 @@
+
+val dataset:
+=== elytes ===
+Pass Element and Charge and Spin Counter({True: 889184, False: 811029})
+Fail Element, Pass Charge or Spin Counter({False: 1158283, True: 541930})
+Fail Charge, Pass Element or Spin Counter({False: 1655028, True: 45185})
+Fail Spin, Pass Charge or Element Counter({False: 1667854, np.True_: 32359})
+Fail Element, Charge, and Spin Counter({False: 1666126, True: 34087})
+=== biomolecules ===
+Pass Element and Charge and Spin Counter({True: 453011, False: 154611})
+Fail Element, Pass Charge or Spin Counter({False: 592034, True: 15588})
+Fail Charge, Pass Element or Spin Counter({False: 475748, True: 131874})
+Fail Spin, Pass Charge or Element Counter({False: 607619, np.True_: 3})
+Fail Element, Charge, and Spin Counter({False: 607608, True: 14})
+=== metal_complexes ===
+Pass Element and Charge and Spin Counter({False: 192537})
+Fail Element, Pass Charge or Spin Counter({False: 137063, True: 55474})
+Fail Charge, Pass Element or Spin Counter({False: 192537})
+Fail Spin, Pass Charge or Element Counter({False: 192537})
+Fail Element, Charge, and Spin Counter({False: 147710, True: 44827})
+=== spice ===
+Pass Element and Charge and Spin Counter({True: 9550, False: 80})
+Fail Element, Pass Charge or Spin Counter({False: 9630})
+Fail Charge, Pass Element or Spin Counter({False: 9561, True: 69})
+Fail Spin, Pass Charge or Element Counter({False: 9630})
+Fail Element, Charge, and Spin Counter({False: 9630})
+=== orbnet_denali ===
+Pass Element and Charge and Spin Counter({True: 12944, False: 6415})
+Fail Element, Pass Charge or Spin Counter({False: 15030, True: 4329})
+Fail Charge, Pass Element or Spin Counter({False: 17968, True: 1391})
+Fail Spin, Pass Charge or Element Counter({False: 19359})
+Fail Element, Charge, and Spin Counter({False: 19359})
+=== geom_orca6 ===
+Pass Element and Charge and Spin Counter({True: 5933, False: 22})
+Fail Element, Pass Charge or Spin Counter({False: 5955})
+Fail Charge, Pass Element or Spin Counter({False: 5933, True: 22})
+Fail Spin, Pass Charge or Element Counter({False: 5955})
+Fail Element, Charge, and Spin Counter({False: 5955})
+=== reactivity ===
+Pass Element and Charge and Spin Counter({True: 175748, False: 48005})
+Fail Element, Pass Charge or Spin Counter({False: 201046, True: 22707})
+Fail Charge, Pass Element or Spin Counter({False: 218355, True: 5398})
+Fail Spin, Pass Charge or Element Counter({False: 208518, np.True_: 15235})
+Fail Element, Charge, and Spin Counter({False: 222650, True: 1103})
+=== ani2x ===
+Pass Element and Charge and Spin Counter({True: 2952})
+Fail Element, Pass Charge or Spin Counter({False: 2952})
+Fail Charge, Pass Element or Spin Counter({False: 2952})
+Fail Spin, Pass Charge or Element Counter({False: 2952})
+Fail Element, Charge, and Spin Counter({False: 2952})
+
+Train dataset
+=== elytes ===
+Pass Element and Charge and Spin Counter({True: 10381244, False: 10359233})
+Fail Element, Pass Charge or Spin Counter({False: 15744150, True: 4996327})
+Fail Charge, Pass Element or Spin Counter({False: 20276558, True: 463919})
+Fail Spin, Pass Charge or Element Counter({False: 20003834, np.True_: 736643})
+Fail Element, Charge, and Spin Counter({False: 19787289, True: 953188})
+=== biomolecules ===
+Pass Element and Charge and Spin Counter({True: 12005719, False: 3083247})
+Fail Element, Pass Charge or Spin Counter({False: 15019930, True: 69036})
+Fail Charge, Pass Element or Spin Counter({False: 13364142, True: 1724824})
+Fail Spin, Pass Charge or Element Counter({False: 14014785, np.True_: 1074181})
+Fail Element, Charge, and Spin Counter({False: 15088876, True: 90})
+=== spice ===
+Pass Element and Charge and Spin Counter({True: 1778579, False: 197756})
+Fail Element, Pass Charge or Spin Counter({False: 1789729, True: 186606})
+Fail Charge, Pass Element or Spin Counter({False: 1968655, True: 7680})
+Fail Spin, Pass Charge or Element Counter({False: 1976335})
+Fail Element, Charge, and Spin Counter({False: 1976335})
+=== metal_complexes ===
+Pass Element and Charge and Spin Counter({False: 15932284})
+Fail Element, Pass Charge or Spin Counter({False: 11239799, True: 4692485})
+Fail Charge, Pass Element or Spin Counter({False: 15932284})
+Fail Spin, Pass Charge or Element Counter({False: 15932284})
+Fail Element, Charge, and Spin Counter({False: 12636542, True: 3295742})
+=== orbnet_denali ===
+Pass Element and Charge and Spin Counter({True: 2103412, False: 186722})
+Fail Element, Pass Charge or Spin Counter({False: 2158115, True: 132019})
+Fail Charge, Pass Element or Spin Counter({False: 2238980, True: 51154})
+Fail Spin, Pass Charge or Element Counter({False: 2290134})
+Fail Element, Charge, and Spin Counter({False: 2290134})
+=== geom_orca6 ===
+Pass Element and Charge and Spin Counter({True: 8939758, False: 8153})
+Fail Element, Pass Charge or Spin Counter({False: 8947050, True: 861})
+Fail Charge, Pass Element or Spin Counter({False: 8940619, True: 7292})
+Fail Spin, Pass Charge or Element Counter({False: 8947911})
+Fail Element, Charge, and Spin Counter({False: 8947911})
+=== reactivity ===
+Pass Element and Charge and Spin Counter({True: 11175900, False: 2946031})
+Fail Element, Pass Charge or Spin Counter({False: 12885803, True: 1236128})
+Fail Charge, Pass Element or Spin Counter({False: 13684904, True: 437027})
+Fail Spin, Pass Charge or Element Counter({False: 13070092, np.True_: 1051839})
+Fail Element, Charge, and Spin Counter({False: 14102786, True: 19145})
+=== ani2x ===
+Pass Element and Charge and Spin Counter({True: 9639012})
+Fail Element, Pass Charge or Spin Counter({False: 9639012})
+Fail Charge, Pass Element or Spin Counter({False: 9639012})
+Fail Spin, Pass Charge or Element Counter({False: 9639012})
+Fail Element, Charge, and Spin Counter({False: 9639012})
+=== rgd ===
+Pass Element and Charge and Spin Counter({True: 3359478})
+Fail Element, Pass Charge or Spin Counter({False: 3359478})
+Fail Charge, Pass Element or Spin Counter({False: 3359478})
+Fail Spin, Pass Charge or Element Counter({False: 3359478})
+Fail Element, Charge, and Spin Counter({False: 3359478})
+=== trans1x ===
+Pass Element and Charge and Spin Counter({True: 9569752})
+Fail Element, Pass Charge or Spin Counter({False: 9569752})
+Fail Charge, Pass Element or Spin Counter({False: 9569752})
+Fail Spin, Pass Charge or Element Counter({False: 9569752})
+Fail Element, Charge, and Spin Counter({False: 9569752})
