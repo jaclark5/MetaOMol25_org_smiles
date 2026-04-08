@@ -1,0 +1,225 @@
+{
+  "dataset": "descent_format_geom",
+  "card_pretty_name": "Meta-OMol25 Descent Formatted GEOM v1.0",
+  "paths": {
+    "dataset_root": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom",
+    "metadata_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_metadata",
+    "smee_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_smee",
+    "failed_rows_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_failed_rows.jsonl",
+    "layout": "explicit"
+  },
+  "ase_db_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/ase_databases/geom_orca6.db",
+  "metadata": {
+    "rows": 8327720,
+    "columns": [
+      "OMol25_data_id",
+      "OMol25_id",
+      "OMol25_split",
+      "OpenFF_id",
+      "formula",
+      "charge",
+      "OpenFF_Elements",
+      "OpenFF_abs(q)<=1",
+      "OpenFF_spin=1",
+      "smiles"
+    ],
+    "features": {
+      "OMol25_data_id": "Value('string')",
+      "OMol25_id": "Value('int64')",
+      "OMol25_split": "Value('string')",
+      "OpenFF_id": "Value('int64')",
+      "formula": "Value('string')",
+      "charge": "Value('int64')",
+      "OpenFF_Elements": "Value('bool')",
+      "OpenFF_abs(q)<=1": "Value('bool')",
+      "OpenFF_spin=1": "Value('bool')",
+      "smiles": "Value('string')"
+    },
+    "sample_size_used": 8327720,
+    "sample_null_counts": {},
+    "sample_split_counts": {
+      "val": 5591,
+      "train": 8322129
+    },
+    "sample_charge_counts": {
+      "0": 8021650,
+      "1": 295915,
+      "-1": 5224,
+      "-3": 302,
+      "-2": 423,
+      "2": 4134,
+      "3": 67,
+      "-4": 5
+    },
+    "sample_openff_elements_flag": {
+      "True": 8326923,
+      "False": 797
+    },
+    "sample_openff_abs_q_le_1_flag": {
+      "True": 8322789,
+      "False": 4931
+    },
+    "sample_openff_spin_1_flag": {
+      "True": 8327720
+    },
+    "sample_molecular_weight_stats": {
+      "min": 16.043,
+      "max": 1550.1908199999998,
+      "mean": 385.2821320837098,
+      "n": 8327720
+    }
+  },
+  "smee": {
+    "rows": 8327720,
+    "columns": [
+      "smiles",
+      "coords",
+      "energy",
+      "forces"
+    ],
+    "features": {
+      "smiles": "Value('string')",
+      "coords": "List(Value('float32'))",
+      "energy": "List(Value('float32'))",
+      "forces": "List(Value('float32'))"
+    },
+    "sample_size_used": 8327720,
+    "sample_null_counts": {},
+    "sample_coord_dim_distribution": {
+      "3": 8327720
+    },
+    "sample_force_dim_distribution": {
+      "3": 8327720
+    },
+    "sample_energy_stats": {
+      "min": -7202909.0,
+      "max": -25408.4921875,
+      "mean": -975299.030530648
+    },
+    "sample_molecular_weight_stats": {},
+    "sample_molecular_weight_source_counts": {}
+  },
+  "failed_rows": {
+    "rows_total": 626146,
+    "json_parse_errors": 0,
+    "unique_failed_indices": 626146,
+    "duplicate_failed_index_rows": 0,
+    "top_errors": [
+      [
+        "ValueError('Inconsistent charge with target!')",
+        41075
+      ],
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye atom stereochemistry assumptions failed. The atom in the oemol has stereochemistry None and the atom in the offmol has stereochemistry S.')",
+        16764
+      ],
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye atom stereochemistry assumptions failed. The atom in the oemol has stereochemistry None and the atom in the offmol has stereochemistry R.')",
+        14028
+      ],
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye bond stereochemistry assumptions failed. The bond in the oemol has stereochemistry None and the bond in the offmol has stereochemistry Z.')",
+        158
+      ],
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye bond stereochemistry assumptions failed. The bond in the oemol has stereochemistry None and the bond in the offmol has stereochemistry E.')",
+        83
+      ],
+      [
+        "AtomValenceException('Explicit valence for atom # 11 N, 4, is greater than permitted')",
+        40
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [Cl-].[H]c1c([H])c2c(c([H])c1OC(=O)N(C([H])([H])[C-]([H])[H])C([H])([H])C([H])([H])Cl)C([H])([H])C([H])([H])[C@@]1([H])[C@]3([H])C([H])([H])C([H])([H])[C@]([H])(OP([O])([O])=O)[C@@]3(C([H])([H])[H])C([H])([H])C([H])([H])[C@]21[H].')",
+        36
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H].[H]C(OC(=O)C1=NN(C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])[H])C(=O)c2c1c([H])c([H])c([H])c2[H])=C([O])C1=C(N([H])[H])N(C([H])([H])[H])C(=O)N(C([H])([H])[H])C1=O.')",
+        35
+      ],
+      [
+        "AtomValenceException('Explicit valence for atom # 25 N, 4, is greater than permitted')",
+        32
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H].[H][C](C([H])([H])c1c(OC([H])([H])[H])c([H])c(SC([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])[H])c(OC([H])([H])[H])c1[H])[N+]([H])(C([H])([H])[H])C([H])([H])[H].')",
+        29
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H].[H].[H]C(OC(=O)C1=C(C([H])([H])[H])N([H])C(=O)N([H])[C@]1([H])c1c(OC([H])([H])C([H])([H])C([H])([H])C([H])([H])[H])c([H])c([H])c([H])c1[H])=C([H])OC([H])([H])C([H])([H])[H].')",
+        29
+      ],
+      [
+        "AtomValenceException('Explicit valence for atom # 13 N, 4, is greater than permitted')",
+        27
+      ],
+      [
+        "AtomValenceException('Explicit valence for atom # 10 N, 4, is greater than permitted')",
+        25
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H].[H].[H][C](C([H])([H])C([H])([H])C([H])([H])C([H])([H])OC(=O)C([H])([H])[N+]([C]([H])[H])(C([H])([H])[H])C([H])([H])[H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])[H].')",
+        24
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H].[H][C]([H])C([H])([H])OC(=O)C1=C(C([H])([H])SC2=NN=C(c3c([H])c([H])nc([H])c3[H])N2C([H])([H])C([H])([H])OC([H])([H])[H])N([H])C(C(=O)OC([H])([H])C([H])([H])[H])=C1C([H])([H])[H].')",
+        24
+      ],
+      [
+        "AtomValenceException('Explicit valence for atom # 16 N, 4, is greater than permitted')",
+        23
+      ],
+      [
+        "AtomValenceException('Explicit valence for atom # 8 N, 4, is greater than permitted')",
+        22
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 2 radical electrons on molecule [H+].[H][C]C([H])([H])N([C+]([O-])OC([H])([H])C([H])([H])[H])C([H])([H])C([H])([H])[C-]([H])N([H])[C+]1[C+]([O-])[C+]([O-])[C-]1N([H])C([H])([H])C([H])([H])N(C([H])([H])C([H])([H])C([H])([H])[H])C([H])([H])C([H])([H])C([H])([H])[H].')",
+        21
+      ],
+      [
+        "AtomValenceException('Explicit valence for atom # 5 N, 4, is greater than permitted')",
+        21
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H].[H]C1=C=C(c2c([H])c([H])[n+](C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])[H])c([H])c2[H])C([H])=C([H])[N+]1C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])[H].')",
+        21
+      ]
+    ]
+  },
+  "alignment": {
+    "metadata_rows": 8327720,
+    "smee_rows": 8327720,
+    "row_count_match": true,
+    "sample_size_used": 8327720,
+    "sample_smiles_mismatch_count": 0
+  },
+  "coverage": {
+    "strict_mode": true,
+    "strict_index_max": -1,
+    "ase_total_rows": 8953866,
+    "metadata_rows": 8327720,
+    "metadata_rows_with_openff_id": 8327720,
+    "metadata_rows_without_openff_id": 0,
+    "metadata_non_int_openff_id_rows": 0,
+    "metadata_out_of_range_openff_id_rows": 0,
+    "metadata_duplicate_indices": 0,
+    "failed_unique_indices": 626146,
+    "failed_non_int_indices": 0,
+    "failed_out_of_range_indices": 0,
+    "coverage_meta_unique": 8327720,
+    "coverage_failed_unique": 626146,
+    "overlap_meta_failed": 0,
+    "accounted_total_after_overlap_adjustment": 8953866,
+    "uncovered_count": 0,
+    "uncovered_indices_if_small": null,
+    "all_ase_structures_accounted_for": true
+  },
+  "processability": {
+    "smee_importable": true,
+    "descent_importable": true,
+    "descent_create_dataset_ok": true,
+    "validation_rows_used": 256,
+    "error": null
+  }
+}

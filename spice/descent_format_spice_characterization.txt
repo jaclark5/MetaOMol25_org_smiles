@@ -1,0 +1,30 @@
+Dataset: descent_format_spice
+Layout detected: explicit
+Metadata path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_metadata
+Smee path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_smee
+Failed rows path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_failed_rows.jsonl
+
+Coverage check against ASE DB
+- ASE rows: 1985965
+- Metadata rows: 1956538
+- Failed unique indices: 29427
+- Accounted total: 1985965
+- Uncovered count: 0
+- All accounted for: True
+
+Metadata/Smee alignment
+- Row count match: True
+- Sample smiles mismatches: 0
+
+smee/descent processability
+- smee importable: True
+- descent importable: True
+- descent.create_dataset(sample) ok: True
+
+Metadata structure
+- Columns: OMol25_data_id, OMol25_id, OMol25_split, OpenFF_id, formula, charge, OpenFF_Elements, OpenFF_abs(q)<=1, OpenFF_spin=1, smiles, source, lowdin_charges
+- Rows: 1956538
+
+Smee structure
+- Columns: smiles, coords, energy, forces
+- Rows: 1956538

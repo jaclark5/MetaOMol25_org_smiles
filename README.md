@@ -1,9 +1,11 @@
 # MetaOMol25 OpenFF Dataset Builder
 
-This repository is a two-step pipeline for building OpenFF-ready Hugging Face datasets from Meta-OMol25.
+This repository is a four-step pipeline for building OpenFF-ready Hugging Face datasets from Meta-OMol25.
 
 - Step 1: prepare/filter ASE databases with 1_sort_data.ipynb
 - Step 2: convert ASE data into sharded + merged Hugging Face datasets with 2_get_smiles_sharded.py
+- Step 3: characterize dataset quality and processability with 3_characterize_hf_dataset.py
+- Step 4: push metadata + spice configs to Hugging Face Hub with 4_push_to_hub.py
 
 The conversion step is designed to:
 
@@ -17,6 +19,8 @@ The conversion step is designed to:
 
 - 1_sort_data.ipynb: Step 1 notebook. Builds filtered ASE databases from train/val OMol25 data and writes split-aware metadata used by step 2.
 - 2_get_smiles_sharded.py: Step 2 script. Converts ASE DB rows to OpenFF metadata+smee Hugging Face datasets.
+- 3_characterize_hf_dataset.py: Step 3 script. Generates characterization reports and a dataset card draft.
+- 4_push_to_hub.py: Step 4 script. Pushes local metadata and spice (or smee) datasets as Hub configs.
 - geom/: Additional project data
 - notes.txt, breakdown.xlsx: Project notes and analysis artifacts
 - LICENSE: License file
@@ -35,6 +39,17 @@ The conversion step is designed to:
 - Read from ASE DB created in step 1
 - Convert to OpenFF-compatible records
 - Write metadata/smee shards plus merged metadata/smee datasets
+
+3. Run 3_characterize_hf_dataset.py
+
+- Summarize metadata/smee dataset quality
+- Validate processability with descent/smee
+- Write JSON, text, and dataset card outputs
+
+4. Run 4_push_to_hub.py
+
+- Load local metadata/spice (or metadata/smee) datasets from disk
+- Push each dataset to the same Hub repo using separate `config_name` values
 
 ## Requirements
 
@@ -100,6 +115,15 @@ Example:
       --shard-size 250 \
       --workers 4 \
       --report-every 10000
+
+Step 4 example:
+
+    python 4_push_to_hub.py \
+      --repo-id your-username/your-dataset \
+      --metadata-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom_orca6_metadata \
+      --smee-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom_orca6_smee \
+      --metadata-config metadata \
+      --smee-config smee
 
 ## Output Layout
 

@@ -1,0 +1,230 @@
+{
+  "dataset": "descent_format_spice",
+  "card_pretty_name": "Meta-OMol25 Descent Formatted SPICE v1.0",
+  "paths": {
+    "dataset_root": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets",
+    "metadata_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_metadata",
+    "smee_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_smee",
+    "failed_rows_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_failed_rows.jsonl",
+    "layout": "explicit"
+  },
+  "ase_db_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/ase_databases/spice.db",
+  "metadata": {
+    "rows": 1956538,
+    "columns": [
+      "OMol25_data_id",
+      "OMol25_id",
+      "OMol25_split",
+      "OpenFF_id",
+      "formula",
+      "charge",
+      "OpenFF_Elements",
+      "OpenFF_abs(q)<=1",
+      "OpenFF_spin=1",
+      "smiles",
+      "source",
+      "lowdin_charges"
+    ],
+    "features": {
+      "OMol25_data_id": "Value('string')",
+      "OMol25_id": "Value('int64')",
+      "OMol25_split": "Value('string')",
+      "OpenFF_id": "Value('int64')",
+      "formula": "Value('string')",
+      "charge": "Value('int64')",
+      "OpenFF_Elements": "Value('bool')",
+      "OpenFF_abs(q)<=1": "Value('bool')",
+      "OpenFF_spin=1": "Value('bool')",
+      "smiles": "Value('string')",
+      "source": "Value('string')",
+      "lowdin_charges": "List(Value('float64'))"
+    },
+    "sample_size_used": 1956538,
+    "sample_null_counts": {},
+    "sample_split_counts": {
+      "val": 9554,
+      "train": 1946984
+    },
+    "sample_charge_counts": {
+      "0": 1814182,
+      "-1": 54336,
+      "1": 80686,
+      "-3": 498,
+      "2": 2973,
+      "-2": 3489,
+      "3": 3,
+      "-4": 271,
+      "-5": 100
+    },
+    "sample_openff_elements_flag": {
+      "True": 1782811,
+      "False": 173727
+    },
+    "sample_openff_abs_q_le_1_flag": {
+      "True": 1949204,
+      "False": 7334
+    },
+    "sample_openff_spin_1_flag": {
+      "True": 1956538
+    },
+    "sample_molecular_weight_stats": {
+      "min": 4.032,
+      "max": 1451.5527619980003,
+      "mean": 285.9158727949725,
+      "n": 1956538
+    }
+  },
+  "smee": {
+    "rows": 1956538,
+    "columns": [
+      "smiles",
+      "coords",
+      "energy",
+      "forces"
+    ],
+    "features": {
+      "smiles": "Value('string')",
+      "coords": "List(Value('float32'))",
+      "energy": "List(Value('float32'))",
+      "forces": "List(Value('float32'))"
+    },
+    "sample_size_used": 1956538,
+    "sample_null_counts": {},
+    "sample_coord_dim_distribution": {
+      "3": 1956538
+    },
+    "sample_force_dim_distribution": {
+      "3": 1956538
+    },
+    "sample_energy_stats": {
+      "min": -17642260.0,
+      "max": -1401.253173828125,
+      "mean": -856549.5665306065
+    },
+    "sample_molecular_weight_stats": {},
+    "sample_molecular_weight_source_counts": {}
+  },
+  "failed_rows": {
+    "rows_total": 29427,
+    "json_parse_errors": 0,
+    "unique_failed_indices": 29427,
+    "duplicate_failed_index_rows": 0,
+    "top_errors": [
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye atom stereochemistry assumptions failed. The atom in the oemol has stereochemistry None and the atom in the offmol has stereochemistry S.')",
+        6777
+      ],
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye atom stereochemistry assumptions failed. The atom in the oemol has stereochemistry None and the atom in the offmol has stereochemistry R.')",
+        6156
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H][O+][H].[K].')",
+        2845
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H][O+][H].[Na].')",
+        2745
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H][O+][H].[Li].')",
+        2677
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [Ca+].[H][O+][H].')",
+        1411
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H][O+][H].[Mg+].')",
+        1411
+      ],
+      [
+        "ValueError('Inconsistent charge with target!')",
+        268
+      ],
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye bond stereochemistry assumptions failed. The bond in the oemol has stereochemistry None and the bond in the offmol has stereochemistry E.')",
+        84
+      ],
+      [
+        "InconsistentStereochemistryError('Programming error: OpenEye bond stereochemistry assumptions failed. The bond in the oemol has stereochemistry None and the bond in the offmol has stereochemistry Z.')",
+        79
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H][O+]C([H])=[O+].[K-].')",
+        54
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [H][O+]C([H])=[O+].[Na-].')",
+        51
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [Cl].[Li].')",
+        48
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 9 radical electrons on molecule [Li+2].[Li].')",
+        45
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [I].[Li].')",
+        44
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [Cl].[Na].')",
+        44
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 9 radical electrons on molecule [Li].[Na+2].')",
+        42
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [Cl].[K].')",
+        40
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 1 radical electrons on molecule [I].[Na].')",
+        40
+      ],
+      [
+        "RadicalsNotSupportedError('The OpenFF Toolkit does not currently support parsing molecules with S- and P-block radicals. Found 9 radical electrons on molecule [Na+2].[Na].')",
+        38
+      ]
+    ]
+  },
+  "alignment": {
+    "metadata_rows": 1956538,
+    "smee_rows": 1956538,
+    "row_count_match": true,
+    "sample_size_used": 1956538,
+    "sample_smiles_mismatch_count": 0
+  },
+  "coverage": {
+    "strict_mode": true,
+    "strict_index_max": -1,
+    "ase_total_rows": 1985965,
+    "metadata_rows": 1956538,
+    "metadata_rows_with_openff_id": 1956538,
+    "metadata_rows_without_openff_id": 0,
+    "metadata_non_int_openff_id_rows": 0,
+    "metadata_out_of_range_openff_id_rows": 0,
+    "metadata_duplicate_indices": 0,
+    "failed_unique_indices": 29427,
+    "failed_non_int_indices": 0,
+    "failed_out_of_range_indices": 0,
+    "coverage_meta_unique": 1956538,
+    "coverage_failed_unique": 29427,
+    "overlap_meta_failed": 0,
+    "accounted_total_after_overlap_adjustment": 1985965,
+    "uncovered_count": 0,
+    "uncovered_indices_if_small": null,
+    "all_ase_structures_accounted_for": true
+  },
+  "processability": {
+    "smee_importable": true,
+    "descent_importable": true,
+    "descent_create_dataset_ok": true,
+    "validation_rows_used": 256,
+    "error": null
+  }
+}
