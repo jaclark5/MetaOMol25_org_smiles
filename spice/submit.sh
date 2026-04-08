@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#SBATCH --job-name=omol25  ## job name
+#SBATCH --job-name=omol25-spice  ## job name
 #SBATCH -p standard              ## use free partition
 #SBATCH -t 5-00:00:00
 #SBATCH --nodes=1            ## use 1 node, don't ask for multiple
 #SBATCH --ntasks 1
 #SBATCH --cpus-per-task=32
 #SBATCH --account DMOBLEY_LAB
-#SBATCH --mem-per-cpu=4G     ## ask for 1Gb memory per CPU
+#SBATCH --mem-per-cpu=1G     ## ask for 1Gb memory per CPU
 #SBATCH --constraint="intel&fastscratch"
 #SBATCH -o stdout.txt
 #SBATCH -e stderr.txt
@@ -24,9 +24,9 @@ mamba activate bts
 mkdir -p ../../geom
 
 python ../2_get_smiles_sharded.py \
-  --dataset-path "../../geom" \
-  --output-path "../../geom" \
-  --ds-name "geom_orca6" \
+  --dataset-path "../../spice" \
+  --output-path "../../spice" \
+  --ds-name "spice" \
   --shard-size "10000" \
   --workers "$SLURM_CPUS_ON_NODE" \
   --executor process \
