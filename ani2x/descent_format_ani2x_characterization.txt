@@ -1,14 +1,14 @@
-Dataset: descent_format_geom
+Dataset: descent_format_ani2x
 Layout detected: explicit
-Metadata path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_metadata_chg
-Smee path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_smee
-Failed rows path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_failed_rows.jsonl
+Metadata path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/ani2x/ani2x_metadata
+Smee path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/ani2x/ani2x_smee
+Failed rows path: /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/ani2x/ani2x_failed_rows.jsonl
 
 Coverage check against ASE DB
-- ASE rows: 8953866
-- Metadata rows: 8327720
-- Failed unique indices: 626146
-- Accounted total: 8953866
+- ASE rows: 9641964
+- Metadata rows: 9323426
+- Failed unique indices: 318538
+- Accounted total: 9641964
 - Uncovered count: 0
 - All accounted for: True
 
@@ -23,8 +23,8 @@ smee/descent processability
 
 Metadata structure
 - Columns: OMol25_data_id, OMol25_id, OMol25_split, OpenFF_id, formula, charge, OpenFF_Elements, OpenFF_abs(q)<=1, OpenFF_spin=1, smiles, source, lowdin_charges
-- Rows: 8327720
+- Rows: 9323426
 
 Smee structure
 - Columns: smiles, coords, energy, forces
-- Rows: 8327720
+- Rows: 9323426

@@ -11,17 +11,19 @@ The conversion step is designed to:
 
 - Stream structures from an ASE SQLite database
 - Convert each structure to OpenFF-compatible records
-- Save metadata and smee outputs in shards
+- Save metadata and smee outputs in shards to reduce memory needs
 - Resume safely from checkpoints
-- Merge shard sets into single metadata and single smee Hugging Face datasets after processing
+- Merge shard sets into single metadata and single smee/descent Hugging Face datasets after processing
 
 ## Repository Contents
 
 - 1_sort_data.ipynb: Step 1 notebook. Builds filtered ASE databases from train/val OMol25 data and writes split-aware metadata used by step 2.
 - 2_get_smiles_sharded.py: Step 2 script. Converts ASE DB rows to OpenFF metadata+smee Hugging Face datasets.
 - 3_characterize_hf_dataset.py: Step 3 script. Generates characterization reports and a dataset card draft.
-- 4_push_to_hub.py: Step 4 script. Pushes local metadata and spice (or smee) datasets as Hub configs.
-- geom/: Additional project data
+- 4_push_to_hub.py: Step 4 script. Pushes local metadata and smee/descent datasets as Hub configs.
+- geom/: Processing information for the GEOM subset
+- spice/: Processing information for the SPICE subset
+- ani2x/: Processing information for the ANI2X subset
 - notes.txt, breakdown.xlsx: Project notes and analysis artifacts
 - LICENSE: License file
 
@@ -29,7 +31,7 @@ The conversion step is designed to:
 
 1. Run 1_sort_data.ipynb
 
-- Download/extract train and val sources if needed
+- Download/extract train and val sources (if needed) to the same ASE dataset
 - Filter target data IDs (for example, geom_orca6)
 - Write filtered ASE databases under:
   dataset-root/ase_databases/<ds-name>.db
@@ -50,6 +52,7 @@ The conversion step is designed to:
 
 - Load local metadata/spice (or metadata/smee) datasets from disk
 - Push each dataset to the same Hub repo using separate `config_name` values
+- This step must be done to convert pyarrow formatted datasets to Hub preferred format, parquet.
 
 ## Requirements
 
@@ -64,33 +67,6 @@ Core imports used by the script:
 - openff-toolkit
 - descent
 - tmos
-
-You also need access to:
-
-- A Meta-OMol25 ASE database file at:
-  dataset-path/ase_databases/<ds-name>.db
-
-## How It Works
-
-This section describes step 2 (2_get_smiles_sharded.py).
-
-For each shard:
-
-1. Read rows from ASE DB using offset and limit
-2. Build per-row payloads
-3. Convert payloads in parallel with worker threads
-4. Save two shard outputs:
-   - metadata shard
-   - smee shard
-5. Append failed rows to a JSONL log
-6. Update checkpoint for resumability
-
-After all shards are processed, the script streaming-merges:
-
-- metadata shards into one merged metadata dataset
-- smee shards into one merged smee dataset
-
-This merge strategy avoids loading all shards into memory at once.
 
 ## CLI Usage
 
@@ -120,8 +96,8 @@ Step 4 example:
 
     python 4_push_to_hub.py \
       --repo-id your-username/your-dataset \
-      --metadata-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom_orca6_metadata \
-      --smee-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom_orca6_smee \
+      --metadata-path /your/path/huggingface_datasets/geom_orca6_metadata \
+      --smee-path /your/path/huggingface_datasets/geom_orca6_smee \
       --metadata-config metadata \
       --smee-config smee
 
@@ -174,28 +150,3 @@ Each entry includes:
 - index
 - ase_id
 - error
-
-## Troubleshooting
-
-1. Script exits immediately with argparse error
-
-- Ensure dataset-path, output-path, and ds-name are provided.
-
-2. Conversion is slow
-
-- Check workers setting and storage path performance.
-- Use SSD for output-path when possible.
-
-3. High failure count
-
-- Inspect failed_rows JSONL to identify dominant error classes.
-
-4. Merge already exists
-
-- If merged metadata or smee dataset already exists, merge step is skipped.
-
-## Safety Notes
-
-- Keep output-path on a filesystem with sufficient free space.
-- Do not delete checkpoint or shard directories mid-run.
-- If moving outputs between disks, preserve directory structure and checkpoint files.

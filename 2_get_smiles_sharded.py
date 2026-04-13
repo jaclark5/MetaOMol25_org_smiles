@@ -91,6 +91,7 @@ def extract_data(atoms, index, method="custom"):
         "OpenFF_Elements": check_elements(atoms, [], ["C", "H", "P", "S", "O", "N", "F", "Cl", "Br", "I"], 0)[0],
         "OpenFF_abs(q)<=1": abs(atoms.info["charge"]) <= 1,
         "OpenFF_spin=1": atoms.info["spin"] == 1,
+        "lowdin_charges": atoms.info.get("lowdin_charges"),
         "smiles": smiles,
     }
 
@@ -138,6 +139,7 @@ def extract_data_from_payload(payload: Dict, method: str = "custom"):
         "OpenFF_Elements": all(el in ["C", "H", "P", "S", "O", "N", "F", "Cl", "Br", "I"] for el in symbols),
         "OpenFF_abs(q)<=1": abs(charge) <= 1,
         "OpenFF_spin=1": payload["spin"] == 1,
+        "lowdin_charges": payload.get("lowdin_charges"),
         "smiles": smiles,
     }
 
@@ -420,6 +422,11 @@ def payload_from_row(row, index: int) -> Dict:
 
     key_matches = [x for x in atoms.info.keys() if "unique" in x]
     key = key_matches[0] if key_matches else "data_id"
+    lowdin_charges = row.data.get("lowdin_charges")
+    if isinstance(lowdin_charges, np.ndarray):
+        lowdin_charges = lowdin_charges.tolist()
+    elif isinstance(lowdin_charges, tuple):
+        lowdin_charges = list(lowdin_charges)
 
     return {
         "index": index,
@@ -432,6 +439,7 @@ def payload_from_row(row, index: int) -> Dict:
         "data_id": atoms.info["data_id"],
         "omol25_index": atoms.info["omol25-index"],
         "omol25_split": atoms.info["omol25-split"],
+        "lowdin_charges": lowdin_charges,
         "energy_ev": float(atoms.get_total_energy()),
         "forces_ev": atoms.get_forces().tolist(),
     }
@@ -677,6 +685,7 @@ def main() -> None:
         "OpenFF_Elements",
         "OpenFF_abs(q)<=1",
         "OpenFF_spin=1",
+        "lowdin_charges",
         "smiles",
     ]
 

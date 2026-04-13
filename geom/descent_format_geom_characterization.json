@@ -3,7 +3,7 @@
   "card_pretty_name": "Meta-OMol25 Descent Formatted GEOM v1.0",
   "paths": {
     "dataset_root": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom",
-    "metadata_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_metadata",
+    "metadata_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_metadata_chg",
     "smee_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_smee",
     "failed_rows_path": "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/geom/geom_orca6_failed_rows.jsonl",
     "layout": "explicit"
@@ -21,7 +21,9 @@
       "OpenFF_Elements",
       "OpenFF_abs(q)<=1",
       "OpenFF_spin=1",
-      "smiles"
+      "smiles",
+      "source",
+      "lowdin_charges"
     ],
     "features": {
       "OMol25_data_id": "Value('string')",
@@ -33,10 +35,14 @@
       "OpenFF_Elements": "Value('bool')",
       "OpenFF_abs(q)<=1": "Value('bool')",
       "OpenFF_spin=1": "Value('bool')",
-      "smiles": "Value('string')"
+      "smiles": "Value('string')",
+      "source": "Value('string')",
+      "lowdin_charges": "List(Value('float64'))"
     },
     "sample_size_used": 8327720,
-    "sample_null_counts": {},
+    "sample_null_counts": {
+      "lowdin_charges": 22
+    },
     "sample_split_counts": {
       "val": 5591,
       "train": 8322129

@@ -76,6 +76,8 @@ Meta-OMol25 provides molecular structures, coordinates, energies, and forces, an
 - OpenFF_abs(q)<=1: Value('bool')
 - OpenFF_spin=1: Value('bool')
 - smiles: Value('string')
+- source: Value('string')
+- lowdin_charges: List(Value('float64'))
 
 ### Smee Schema
 

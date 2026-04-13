@@ -14,7 +14,7 @@ python3 3_characterize_hf_dataset.py \
 
 #python 4_push_to_hub.py \
 #  --repo-id openforcefield/descent-format-spice \
-#  --metadata-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_metadata \
-#  --smee-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice_smee \
+#  --metadata-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice/spice_metadata \
+#  --smee-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/spice/spice_smee \
 #  --metadata-config metadata \
 #  --smee-config descent_data

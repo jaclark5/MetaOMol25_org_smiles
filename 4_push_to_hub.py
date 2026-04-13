@@ -30,7 +30,6 @@ def main() -> None:
 
     print(
         f"Pushing metadata to {args.repo_id} (config={args.metadata_config}) "
-        f"private={args.private}"
     )
     metadata_ds.push_to_hub(
         args.repo_id,
@@ -39,7 +38,6 @@ def main() -> None:
 
     print(
         f"Pushing smee to {args.repo_id} (config={args.smee_config}) "
-        f"private={args.private}"
     )
     smee_ds.push_to_hub(
         args.repo_id,
