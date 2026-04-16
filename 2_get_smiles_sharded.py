@@ -14,7 +14,10 @@ import numpy as np
 from scipy.constants import Avogadro, calorie, physical_constants
 from datasets import Dataset, load_from_disk
 from openff.toolkit import Molecule
+from openff.toolkit.utils.toolkits import RDKitToolkitWrapper, ToolkitRegistry
 import descent.targets.energy
+
+RDKIT_REGISTRY = ToolkitRegistry(toolkit_precedence=[RDKitToolkitWrapper])
 
 # ASE returns energies in eV and forces in eV/A.
 # Convert to requested units: kcal/mol and kcal/mol/A.
@@ -79,6 +82,7 @@ def extract_data(atoms, index, method="custom"):
         mapped=True,
         isomeric=True,
         explicit_hydrogens=True,
+        toolkit_registry=RDKIT_REGISTRY,
     )
 
     dict_metadata = {
@@ -127,6 +131,7 @@ def extract_data_from_payload(payload: Dict, method: str = "custom"):
         mapped=True,
         isomeric=True,
         explicit_hydrogens=True,
+        toolkit_registry=RDKIT_REGISTRY,
     )
 
     dict_metadata = {
