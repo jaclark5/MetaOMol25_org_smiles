@@ -17,6 +17,8 @@ from openff.toolkit import Molecule
 from openff.toolkit.utils.toolkits import RDKitToolkitWrapper, ToolkitRegistry
 import descent.targets.energy
 
+from _smiles_quality import assess_smiles
+
 RDKIT_REGISTRY = ToolkitRegistry(toolkit_precedence=[RDKitToolkitWrapper])
 
 # ASE returns energies in eV and forces in eV/A.
@@ -97,6 +99,7 @@ def extract_data(atoms, index, method="custom"):
         "OpenFF_spin=1": atoms.info["spin"] == 1,
         "lowdin_charges": atoms.info.get("lowdin_charges"),
         "smiles": smiles,
+        **assess_smiles(smiles, atoms.info["charge"]),
     }
 
     dict_smee = {
@@ -146,6 +149,7 @@ def extract_data_from_payload(payload: Dict, method: str = "custom"):
         "OpenFF_spin=1": payload["spin"] == 1,
         "lowdin_charges": payload.get("lowdin_charges"),
         "smiles": smiles,
+        **assess_smiles(smiles, charge),
     }
 
     dict_smee = {
@@ -692,6 +696,13 @@ def main() -> None:
         "OpenFF_spin=1",
         "lowdin_charges",
         "smiles",
+        "smiles_n_fragments",
+        "smiles_n_orphaned_h",
+        "smiles_sanitizes",
+        "smiles_sanitize_error",
+        "smiles_radical",
+        "smiles_formal_charge",
+        "smiles_charge_matches",
     ]
 
     total_rows = ase_db.count()

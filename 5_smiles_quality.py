@@ -27,6 +27,8 @@ from huggingface_hub import hf_hub_download
 from rdkit import Chem
 from rdkit.Chem import Descriptors, rdMolDescriptors
 
+from _smiles_quality import count_orphaned_h, count_radical_electrons, parse_mapped_smiles, try_sanitize
+
 try:
     from tqdm.auto import tqdm
 except ImportError:
@@ -58,8 +60,8 @@ def classify_smiles(smiles: str, index: int) -> SmilesQualityResult:
     classification = "OK"
     
     # Try to parse with RDKit
-    mol = Chem.MolFromSmiles(smiles, sanitize=False)
-    
+    mol = parse_mapped_smiles(smiles)
+
     if mol is None:
         return SmilesQualityResult(
             index=index,
@@ -85,24 +87,16 @@ def classify_smiles(smiles: str, index: int) -> SmilesQualityResult:
         classification = "WARNING"
     
     # Check for orphaned hydrogen atoms: isolated [H] fragments
-    has_orphaned_h = False
-    for atom in mol.GetAtoms():
-        # Check for hydrogen with no bonds (orphaned)
-        if atom.GetSymbol() == "H" and atom.GetDegree() == 0:
-            has_orphaned_h = True
-            issues.append("Orphaned hydrogen ([H] with no bonds)")
-            classification = "ERROR"
-            break
-    
-    # Check for radicals (unpaired electrons)
-    has_radical = False
-    radical_count = 0
-    for atom in mol.GetAtoms():
-        num_radicals = atom.GetNumRadicalElectrons()
-        if num_radicals > 0:
-            has_radical = True
-            radical_count += num_radicals
-    
+    has_orphaned_h = count_orphaned_h(mol) > 0
+    if has_orphaned_h:
+        issues.append("Orphaned hydrogen ([H] with no bonds)")
+        classification = "ERROR"
+
+    # Check for radicals (unpaired electrons), assigned by a test sanitization
+    sanitized_mol, sanitize_error = try_sanitize(mol)
+    radical_count = count_radical_electrons(sanitized_mol)
+    has_radical = radical_count > 0
+
     if has_radical:
         issues.append(f"Radical electrons ({radical_count})")
         classification = "ERROR"
@@ -125,10 +119,8 @@ def classify_smiles(smiles: str, index: int) -> SmilesQualityResult:
         classification = "WARNING"
     
     # Check for valence violations
-    try:
-        Chem.SanitizeMol(mol)
-    except Exception as e:
-        issues.append(f"Valence error: {type(e).__name__}")
+    if sanitize_error:
+        issues.append(f"Valence error: {sanitize_error}")
         if classification != "ERROR":
             classification = "WARNING"
     
