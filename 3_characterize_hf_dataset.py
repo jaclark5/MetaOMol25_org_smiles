@@ -12,10 +12,7 @@ from ase.data import atomic_masses, chemical_symbols
 from ase.db import connect
 from datasets import Dataset, load_from_disk
 
-try:
-    from tqdm.auto import tqdm
-except Exception:
-    tqdm = None
+from tqdm.auto import tqdm
 
 
 DEFAULT_HF_ROOT = "/Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets"

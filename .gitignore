@@ -128,3 +128,6 @@ ENV/
 */_version.py
 # Cookiecutter-CMS Test Artifacts
 /tests/CI_files
+
+# Agent workflow (local only, not tracked)
+.agents/

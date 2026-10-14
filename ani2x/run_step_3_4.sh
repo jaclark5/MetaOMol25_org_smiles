@@ -14,9 +14,9 @@ python3 ../3_characterize_hf_dataset.py \
   --processability-rows 256 \
   --strict-index-max -1
 
-python ../4_push_to_hub.py \
-  --repo-id openforcefield/descent-format-ani2x \
-  --metadata-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/ani2x/ani2x_metadata \
-  --smee-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/ani2x/ani2x_smee \
-  --metadata-config metadata \
-  --smee-config descent_data
+#python ../4_push_to_hub.py \
+#  --repo-id openforcefield/descent-format-ani2x \
+#  --metadata-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/ani2x/ani2x_metadata \
+#  --smee-path /Volumes/JAC_Backup/OpenFF/Meta-OMol25/huggingface_datasets/ani2x/ani2x_smee \
+#  --metadata-config metadata \
+#  --smee-config descent_data
